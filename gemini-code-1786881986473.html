@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Медицинский центр | udacha-klinika.ru</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Шапка сайта -->
+    <header class="header">
+        <div class="container header-content">
+            <div class="logo">
+                <span class="logo-green">УДАЧА</span> <span class="logo-red">КЛИНИКА</span>
+            </div>
+            <nav class="nav">
+                <a href="#about">О нас</a>
+                <a href="#doctors">Врачи</a>
+                <a href="#prices">Услуги и цены</a>
+                <a href="#contacts">Контакты</a>
+            </nav>
+            <!-- Эта кнопка будет открывать виджет Медлок -->
+            <button class="btn btn-primary" id="medlock-widget-btn">Записаться онлайн</button>
+        </div>
+    </header>
+
+    <!-- Главный экран -->
+    <section class="hero">
+        <div class="container">
+            <h1>Профессиональная медицина, точная диагностика и искренняя забота</h1>
+            <p>Комплексный подход к здоровью всей вашей семьи.</p>
+            <button class="btn btn-red">Узнать подробнее</button>
+        </div>
+    </section>
+
+    <!-- Преимущества (Ваш текст) -->
+    <section id="about" class="advantages">
+        <div class="container">
+            <h2>Почему выбирают наш медицинский центр</h2>
+            <div class="grid-advantages">
+                <div class="card">
+                    <h3>Многопрофильная помощь</h3>
+                    <p>Вам больше не нужно ездить по разным концам города. В нашей клинике принимают врачи — от терапевтов до узких профильных специалистов. Вся медицинская помощь доступна в едином пространстве.</p>
+                </div>
+                <div class="card">
+                    <h3>Врачи-эксперты</h3>
+                    <p>Наши специалисты опираются на клинические рекомендации. Мы не назначаем лишних обследований или неэффективных препаратов — вы получаете понятный и прозрачный план лечения.</p>
+                </div>
+                <div class="card">
+                    <h3>Диагностика за 1 день</h3>
+                    <p>Собственное диагностическое отделение позволяет сдать анализы, пройти УЗИ, ЭКГ в день обращения. Точные результаты без ожидания и очередей.</p>
+                </div>
+                <div class="card">
+                    <h3>Консилиумный подход</h3>
+                    <p>При сложных диагнозах врачи разных профилей работают сообща. Это исключает противоречия в назначениях и гарантирует комплексный контроль лечения.</p>
+                </div>
+                <div class="card">
+                    <h3>Бережное отношение</h3>
+                    <p>Приемы начинаются точно по записи, длятся от 30 до 60 минут без спешки и стресса. Результаты оперативно направляются на почту или в личный кабинет.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Врачи -->
+    <section id="doctors" class="doctors">
+        <div class="container">
+            <h2>Наши специалисты</h2>
+            <div class="grid-doctors">
+                <div class="doctor-card">
+                    <div class="doctor-photo">Фото</div>
+                    <h3>Каштанова Е.Е.</h3>
+                    <p class="specialty">Врач высшей категории, акушер-гинеколог</p>
+                </div>
+                <div class="doctor-card">
+                    <div class="doctor-photo">Фото</div>
+                    <h3>Ковалев С.Н.</h3>
+                    <p class="specialty">Врач высшей категории, уролог</p>
+                </div>
+                <div class="doctor-card">
+                    <div class="doctor-photo">Фото</div>
+                    <h3>Коваленко Т.С.</h3>
+                    <p class="specialty">Врач-педиатр</p>
+                </div>
+                <div class="doctor-card">
+                    <div class="doctor-photo">Фото</div>
+                    <h3>Решетняк И.В.</h3>
+                    <p class="specialty">Врач высшей категории, врач УЗД</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Прайс-лист (Аккордеон) -->
+    <section id="prices" class="prices">
+        <div class="container">
+            <h2>Направления и цены</h2>
+            
+            <details class="price-category">
+                <summary>Хирургия</summary>
+                <div class="price-list">
+                    <div class="price-item"><span>Прием врача-хирурга (первичный)</span> <span>3000 ₽</span></div>
+                    <div class="price-item"><span>Удаление атеромы хирургическим методом</span> <span>7500 ₽</span></div>
+                    <div class="price-item"><span>Вскрытие абсцесса (фурункула)</span> <span>3500 ₽</span></div>
+                    <!-- Сюда добавляются остальные услуги хирургии -->
+                </div>
+            </details>
+
+            <details class="price-category">
+                <summary>Гинекология и Акушерство</summary>
+                <div class="price-list">
+                    <div class="price-item"><span>Прием акушера-гинеколога первичный</span> <span>4000 ₽</span></div>
+                    <div class="price-item"><span>УЗИ гинекологическое</span> <span>2500 ₽</span></div>
+                    <div class="price-item"><span>Ведение беременности I триместр</span> <span>35284 ₽</span></div>
+                </div>
+            </details>
+
+            <details class="price-category">
+                <summary>Педиатрия и Вакцинация</summary>
+                <div class="price-list">
+                    <div class="price-item"><span>Прием врача-педиатра первичный</span> <span>4600 ₽</span></div>
+                    <div class="price-item"><span>Прием + вакцина "Пентаксим"</span> <span>8300 ₽</span></div>
+                </div>
+            </details>
+            
+            <p style="text-align: center; margin-top: 20px; font-size: 0.9em; color: #666;">
+                *Цены носят ознакомительный характер. Полный прайс-лист доступен в регистратуре.
+            </p>
+        </div>
+    </section>
+
+    <!-- Подвал сайта -->
+    <footer id="contacts" class="footer">
+        <div class="container">
+            <p>© 2026 Медицинский центр udacha-klinika.ru</p>
+            <p>Телефон: +7 (XXX) XXX-XX-XX | Адрес: г. Ваш город, ул. Ваша улица, д. X</p>
+        </div>
+    </footer>
+
+</body>
+</html>
