@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Медицинский центр «Удача» | Новороссийск</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-green: #059669;
+            --primary-green-hover: #047857;
+            --accent-red: #e11d48;
+            --accent-red-hover: #be123c;
+            --bg-light: #f0fdf4;
+            --text-main: #1f2937;
+            --text-muted: #4b5563;
+            --white: #ffffff;
+            --font-size-base: 16px;
+        }
+
+        /* Версия для слабовидящих (активируется через JS) */
+        body.accessible-mode {
+            --primary-green: #000000 !important;
+            --primary-green-hover: #333333 !important;
+            --accent-red: #000000 !important;
+            --bg-light: #ffffff !important;
+            --text-main: #000000 !important;
+            --text-muted: #000000 !important;
+            --white: #ffff00 !important; /* Высококонтрастный желтый фон элементов */
+            font-size: 22px !important;
+            background-color: #ffffff !important;
+            color: #000000 !important;
+        }
+
+        body.accessible-mode * {
+            border-color: #000000 !important;
+            box-shadow: none !important;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-size: var(--font-size-base);
+            color: var(--text-main);
+            background-color: #fafafa;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Верхняя панель (Инфо) */
+        .top-bar {
+            background-color: #ecfdf5;
+            border-bottom: 1px solid #d1fae5;
+            padding: 8px 0;
+            font-size: 14px;
+        }
+
+        .top-bar-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .top-info {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .accessible-btn {
+            background: #ffffff;
+            border: 2px solid var(--primary-green);
+            color: var(--primary-green);
+            padding: 4px 12px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 13px;
+            transition: all 0.3s;
+        }
+
+        .accessible-btn:hover {
+            background: var(--primary-green);
+            color: var(--white);
+        }
+
+        /* Шапка */
+        header {
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-green);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .logo-subtitle {
+            font-size: 11px;
+            color: var(--accent-red);
+            font-weight: 600;
+            display: block;
+        }
+
+        nav {
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--primary-green);
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-green);
+            color: var(--white);
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s;
+            text-align: center;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-green-hover);
+        }
+
+        .btn-accent {
+            background-color: var(--accent-red);
+        }
+
+        .btn-accent:hover {
+            background-color: var(--accent-red-hover);
+        }
+
+        /* Hero секция */
+        .hero {
+            background: linear-gradient(135deg, #f0fdf4 0%, #ffffff 100%);
+            padding: 60px 0;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .hero-title {
+            font-size: 38px;
+            color: var(--text-main);
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .hero-title span {
+            color: var(--primary-green);
+        }
+
+        .hero-description {
+            font-size: 18px;
+            color: var(--text-muted);
+            margin-bottom: 30px;
+        }
+
+        .hero-features {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .feature-badge {
+            background: var(--white);
+            border: 1px solid #a7f3d0;
+            color: var(--primary-green);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .hero-img-box img {
+            width: 100%;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+        }
+
+        /* Общие стили секций */
+        section {
+            padding: 70px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 32px;
+            margin-bottom: 15px;
+            color: var(--text-main);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            margin-bottom: 45px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Акции */
+        .promos-section {
+            background-color: #fff;
+        }
+
+        .promos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .promo-card {
+            border: 2px dashed var(--accent-red);
+            background: #fff5f5;
+            border-radius: 12px;
+            padding: 25px;
+            position: relative;
+        }
+
+        .promo-badge {
+            position: absolute;
+            top: -12px;
+            right: 20px;
+            background: var(--accent-red);
+            color: var(--white);
+            padding: 4px 12px;
+            font-size: 12px;
+            font-weight: 700;
+            border-radius: 12px;
+            text-transform: uppercase;
+        }
+
+        .promo-card h3 {
+            color: var(--accent-red);
+            margin-bottom: 10px;
+        }
+
+        /* Услуги и цены */
+        .services-section {
+            background-color: var(--bg-light);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid #e5e7eb;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-green);
+        }
+
+        .service-icon {
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+
+        .service-card h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: var(--primary-green);
+        }
+
+        .service-card p {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+
+        .service-price {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text-main);
+            border-top: 1px solid #f3f4f6;
+            padding-top: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Врачи */
+        .doctors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+        }
+
+        .doctor-card {
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #e5e7eb;
+            text-align: center;
+        }
+
+        .doctor-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .doctor-info {
+            padding: 20px;
+        }
+
+        .doctor-spec {
+            color: var(--accent-red);
+            font-weight: 600;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        .doctor-card h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        /* О клинике и Оборудование */
+        .about-section {
+            background: var(--white);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .equipment-list {
+            list-style: none;
+            margin-top: 15px;
+        }
+
+        .equipment-list li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 10px;
+        }
+
+        .equipment-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--primary-green);
+            font-weight: bold;
+        }
+
+        /* Отзывы */
+        .reviews-section {
+            background-color: var(--bg-light);
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .review-card {
+            background: var(--white);
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid #e5e7eb;
+        }
+
+        .stars {
+            color: #f59e0b;
+            margin-bottom: 10px;
+        }
+
+        .review-author {
+            font-weight: 700;
+            margin-top: 15px;
+            font-size: 14px;
+        }
+
+        /* Форма записи */
+        .booking-section {
+            background: linear-gradient(135deg, #059669 0%, #047857 100%);
+            color: var(--white);
+        }
+
+        .booking-section .section-title,
+        .booking-section .section-subtitle {
+            color: var(--white);
+        }
+
+        .booking-form {
+            max-width: 650px;
+            margin: 0 auto;
+            background: var(--white);
+            padding: 35px;
+            border-radius: 16px;
+            color: var(--text-main);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            font-size: 15px;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--primary-green);
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+
+        /* Контакты */
+        .contacts-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .contact-info-item {
+            margin-bottom: 20px;
+        }
+
+        .contact-info-item h4 {
+            color: var(--primary-green);
+            margin-bottom: 5px;
+        }
+
+        .map-box {
+            width: 100%;
+            height: 350px;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #e5e7eb;
+        }
+
+        /* Подвал */
+        footer {
+            background-color: #111827;
+            color: #9ca3af;
+            padding: 40px 0 20px;
+            font-size: 13px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #374151;
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .disclaimer {
+            text-align: center;
+            color: #6b7280;
+            font-size: 12px;
+            margin-top: 15px;
+        }
+
+        /* Адаптивность */
+        @media (max-width: 900px) {
+            .hero-grid, .about-grid, .contacts-grid {
+                grid-template-columns: 1fr;
+            }
+            nav {
+                display: none; /* Простая адаптация */
+            }
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            .hero-title {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Верхняя инфо-панель -->
+    <div class="top-bar">
+        <div class="container top-bar-content">
+            <div class="top-info">
+                <span>📍 г. Новороссийск, ул. Проспект Дзержинского, д. 219</span>
+                <span>⏰ Пн-Сб: 08:00 — 20:00</span>
+            </div>
+            <button class="accessible-btn" onclick="toggleAccessibleMode()">👁 Версия для слабовидящих</button>
+        </div>
+    </div>
+
+    <!-- Шапка -->
+    <header>
+        <div class="container header-content">
+            <a href="#" class="logo">
+                <div>
+                    <span class="logo-text">🍀 УДАЧА</span>
+                    <span class="logo-subtitle">МЕДИЦИНСКИЙ ЦЕНТР</span>
+                </div>
+            </a>
+            <nav>
+                <a href="#promos">Акции</a>
+                <a href="#services">Услуги и цены</a>
+                <a href="#doctors">Врачи</a>
+                <a href="#about">О клинике</a>
+                <a href="#reviews">Отзывы</a>
+                <a href="#contacts">Контакты</a>
+            </nav>
+            <a href="tel:+79184699612" class="btn btn-accent">+7 (918) 469-96-12</a>
+        </div>
+    </header>
+
+    <!-- Hero Секция -->
+    <section class="hero">
+        <div class="container hero-grid">
+            <div>
+                <h1 class="hero-title">Ваша <span>Удача</span> в заботе о здоровье всей семьи</h1>
+                <p class="hero-description">Прием квалифицированных специалистов, УЗИ-диагностика экспертного класса и процедурный кабинет в Новороссийске.</p>
+                <div class="hero-features">
+                    <span class="feature-badge">✓ Без очередей</span>
+                    <span class="feature-badge">✓ Опытные врачи</span>
+                    <span class="feature-badge">✓ Доступные цены</span>
+                </div>
+                <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                    <a href="#booking" class="btn">Записаться на прием</a>
+                    <a href="#promos" class="btn btn-accent">Смотреть акции</a>
+                </div>
+            </div>
+            <div class="hero-img-box">
+                <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=800&q=80" alt="Медицинский центр Удача">
+            </div>
+        </div>
+    </section>
+
+    <!-- Акции и спецпредложения -->
+    <section id="promos" class="promos-section">
+        <div class="container">
+            <h2 class="section-title">Акции и спецпредложения</h2>
+            <p class="section-subtitle">Заботьтесь о здоровье с выгодой для семейного бюджета</p>
+            <div class="promos-grid">
+                <div class="promo-card">
+                    <span class="promo-badge">Скидка -15%</span>
+                    <h3>Женское здоровье</h3>
+                    <p>Комплексный прием Гинеколога-Эндокринолога + УЗИ органов малого таза со скидкой.</p>
+                    <a href="#booking" onclick="selectService('Гинеколог-эндокринолог')" class="btn btn-accent" style="margin-top: 15px; padding: 8px 16px; font-size: 14px;">Записаться по акции</a>
+                </div>
+                <div class="promo-card">
+                    <span class="promo-badge">Выгодно</span>
+                    <h3>Педиатрический чек-ап</h3>
+                    <p>Полный осмотр педиатра перед садом/школой + базовые анализы процедурного кабинета.</p>
+                    <a href="#booking" onclick="selectService('Педиатр')" class="btn btn-accent" style="margin-top: 15px; padding: 8px 16px; font-size: 14px;">Записаться по акции</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Услуги и цены -->
+    <section id="services" class="services-section">
+        <div class="container">
+            <h2 class="section-title">Услуги и цены</h2>
+            <p class="section-subtitle">Полный спектр медицинских услуг в одном месте</p>
+            <div class="services-grid">
+                
+                <div class="service-card">
+                    <div>
+                        <div class="service-icon">👩‍⚕️</div>
+                        <h3>Гинекология и Эндокринология</h3>
+                        <p>Консультации гинеколога-эндокринолога, диагностика и лечение гормональных нарушений.</p>
+                    </div>
+                    <div class="service-price">
+                        <span>Прием врача</span>
+                        <span style="color: var(--primary-green);">от 2 000 ₽</span>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div>
+                        <div class="service-icon">🎗️</div>
+                        <h3>Маммология</h3>
+                        <p>Профилактика и лечение заболеваний молочных желез, консультация маммолога.</p>
+                    </div>
+                    <div class="service-price">
+                        <span>Прием врача</span>
+                        <span style="color: var(--primary-green);">от 1 800 ₽</span>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div>
+                        <div class="service-icon">🩺</div>
+                        <h3>Терапия и Эндокринология</h3>
+                        <p>Первичный осмотр, ведение хронических больных, лечение щитовидной железы.</p>
+                    </div>
+                    <div class="service-price">
+                        <span>Прием врача</span>
+                        <span style="color: var(--primary-green);">от 1 700 ₽</span>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div>
+                        <div class="service-icon">🥗</div>
+                        <h3>Гастроэнтерология</h3>
+                        <p>Диагностика и лечение заболеваний ЖКТ, подбор лечебной диеты.</p>
+                    </div>
+                    <div class="service-price">
+                        <span>Прием врача</span>
+                        <span style="color: var(--primary-green);">от 1 800 ₽</span>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div>
+                        <div class="service-icon">🩺</div>
+                        <h3>Хирургия</h3>
+                        <p>Консультация хирурга, перевязки, амбулаторные малые хирургические операции.</p>
+                    </div>
+                    <div class="service-price">
+                        <span>Прием врача</span>
+                        <span style="color: var(--primary-green);">от 1 900 ₽</span>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div>
+                        <div class="service-icon">👶</div>
+                        <h3>Педиатрия</h3>
+                        <p>Заботливый осмотр детей с рождения, профилактика и лечение детских болезней.</p>
+                    </div>
+                    <div class="service-price">
+                        <span>Прием врача</span>
+                        <span style="color: var(--primary-green);">от 1 600 ₽</span>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div>
+                        <div class="service-icon">🖥️</div>
+                        <h3>УЗИ Диагностика</h3>
+                        <p>УЗИ органов брюшной полости, малого таза, щитовидной железы, сосудов, мягких тканей.</p>
+                    </div>
+                    <div class="service-price">
+                        <span>УЗИ от</span>
+                        <span style="color: var(--primary-green);">от 1 200 ₽</span>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div>
+                        <div class="service-icon">💉</div>
+                        <h3>Процедурный кабинет</h3>
+                        <p>Забор анализов, инъекции (внутримышечные, внутривенные), капельницы.</p>
+                    </div>
+                    <div class="service-price">
+                        <span>Процедуры</span>
+                        <span style="color: var(--primary-green);">от 300 ₽</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Врачи -->
+    <section id="doctors">
+        <div class="container">
+            <h2 class="section-title">Наши врачи и специалисты</h2>
+            <p class="section-subtitle">Опытные врачи с высокой квалификацией и чутким отношением к пациентам</p>
+            <div class="doctors-grid">
+                
+                <div class="doctor-card">
+                    <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=500&q=80" alt="Врач">
+                    <div class="doctor-info">
+                        <div class="doctor-spec">Гинеколог-Эндокринолог</div>
+                        <h3>Елена Николаевна</h3>
+                        <p style="font-size: 13px; color: var(--text-muted);">Стаж работы: 14 лет</p>
+                    </div>
+                </div>
+
+                <div class="doctor-card">
+                    <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=500&q=80" alt="Врач">
+                    <div class="doctor-info">
+                        <div class="doctor-spec">Хирург, Маммолог</div>
+                        <h3>Сергей Владимирович</h3>
+                        <p style="font-size: 13px; color: var(--text-muted);">Стаж работы: 18 лет</p>
+                    </div>
+                </div>
+
+                <div class="doctor-card">
+                    <img src="https://images.unsplash.com/photo-1594824813572-9ed2bb67335d?auto=format&fit=crop&w=500&q=80" alt="Врач">
+                    <div class="doctor-info">
+                        <div class="doctor-spec">Педиатр, Терапевт</div>
+                        <h3>Ольга Игоревна</h3>
+                        <p style="font-size: 13px; color: var(--text-muted);">Стаж работы: 10 лет</p>
+                    </div>
+                </div>
+
+                <div class="doctor-card">
+                    <img src="https://images.unsplash.com/photo-1537368910025-700350fe46c7?auto=format&fit=crop&w=500&q=80" alt="Врач">
+                    <div class="doctor-info">
+                        <div class="doctor-spec">Врач УЗИ / Гастроэнтеролог</div>
+                        <h3>Михаил Александрович</h3>
+                        <p style="font-size: 13px; color: var(--text-muted);">Стаж работы: 12 лет</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- О клинике / Лицензии / Оборудование -->
+    <section id="about" class="about-section">
+        <div class="container about-grid">
+            <div>
+                <h2 class="section-title" style="text-align: left;">О медицинском центре «Удача»</h2>
+                <p style="margin-bottom: 15px;">Мы создали клинику, в которой сочетаются высокое качество медицины, комфорт и внимание к каждому пациенту. В центре «Удача» в Новороссийске вы можете пройти полный цикл диагностики и лечения.</p>
+                
+                <h4 style="margin-top: 20px; color: var(--primary-green);">Наше оборудование и стандарты:</h4>
+                <ul class="equipment-list">
+                    <li>Современный ультразвуковой сканер экспертного класса</li>
+                    <li>Стерильный процедурный кабинет со всем необходимым для безопасных инъекций и капельниц</li>
+                    <li>Строгое соблюдение санитарно-эпидемиологических норм (СЭН)</li>
+                    <li>Официальные медицинские лицензии на все виды оказываемых услуг</li>
+                </ul>
+            </div>
+            <div>
+                <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=800&q=80" alt="Кабинет клиники Удача" style="width: 100%; border-radius: 12px;">
+            </div>
+        </div>
+    </section>
+
+    <!-- Отзывы -->
+    <section id="reviews" class="reviews-section">
+        <div class="container">
+            <h2 class="section-title">Отзывы наших пациентов</h2>
+            <p class="section-subtitle">Спасибо за доверие к нашему медицинскому центру</p>
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div class="stars">★★★★★</div>
+                    <p>«Замечательный центр! Была на приеме у гинеколога-эндокринолога. Очень чуткий врач, всё подробно объяснила, назначила только необходимые анализы. Спасибо!»</p>
+                    <div class="review-author">— Марина В., г. Новороссийск</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">★★★★★</div>
+                    <p>«Были с ребенком у педиатра. Прием прошел без слез, врач нашла подход сразу. Также прошли УЗИ без ожидания в очередях. Рекомендую медцентр Удача!»</p>
+                    <div class="review-author">— Екатерина П.</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">★★★★★</div>
+                    <p>«Обращался в процедурный кабинет на курс капельниц. Медсестры золотые, вену находят легко. Все чисто, аккуратно и вежливо.»</p>
+                    <div class="review-author">— Игорь С.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Форма записи на прием -->
+    <section id="booking" class="booking-section">
+        <div class="container">
+            <h2 class="section-title">Онлайн-запись на прием</h2>
+            <p class="section-subtitle">Выберите направление или врача, и мы перезвоним для подтверждения времени</p>
+            
+            <form class="booking-form" id="bookingForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="userName">Ваше имя *</label>
+                        <input type="text" id="userName" required placeholder="Иванова Анна">
+                    </div>
+                    <div class="form-group">
+                        <label for="userPhone">Номер телефона *</label>
+                        <input type="tel" id="userPhone" required placeholder="+7 (918) 000-00-00">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="userService">Выберите направление / Врача</label>
+                        <select id="userService">
+                            <option value="Гинеколог-эндокринолог">Гинеколог-эндокринолог</option>
+                            <option value="Маммолог">Маммолог</option>
+                            <option value="Хирург">Хирург</option>
+                            <option value="Терапевт">Терапевт</option>
+                            <option value="Эндокринолог">Эндокринолог</option>
+                            <option value="Гастроэнтеролог">Гастроэнтеролог</option>
+                            <option value="Педиатр">Педиатр</option>
+                            <option value="Врач УЗИ">УЗИ диагностика</option>
+                            <option value="Процедурный кабинет">Процедурный кабинет / Анализы</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="userDate">Желаемая дата</label>
+                        <input type="date" id="userDate">
+                    </div>
+                </div>
+
+                <div class="checkbox-group">
+                    <input type="checkbox" id="agree" required checked>
+                    <label for="agree">Я согласен на обработку персональных данных</label>
+                </div>
+
+                <button type="submit" class="btn btn-accent" style="width: 100%; padding: 15px; font-size: 16px;">Записаться на прием</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Контакты и карта -->
+    <section id="contacts">
+        <div class="container">
+            <h2 class="section-title">Контакты и схема проезда</h2>
+            <p class="section-subtitle">Ждем вас в медицинском центре «Удача»</p>
+            
+            <div class="contacts-grid">
+                <div>
+                    <div class="contact-info-item">
+                        <h4>Адрес:</h4>
+                        <p>г. Новороссийск, ул. Проспект Дзержинского, д. 219</p>
+                    </div>
+                    <div class="contact-info-item">
+                        <h4>Телефон для записи:</h4>
+                        <p><a href="tel:+79184699612" style="color: var(--accent-red); font-weight: 700; font-size: 18px; text-decoration: none;">+7 (918) 469-96-12</a></p>
+                    </div>
+                    <div class="contact-info-item">
+                        <h4>Режим работы:</h4>
+                        <p>Понедельник — Суббота: 08:00 – 20:00<br>Воскресенье: по предварительной записи</p>
+                    </div>
+                    <div class="contact-info-item">
+                        <h4>Как добраться:</h4>
+                        <p>Остановка общественного транспорта «Проспект Дзержинского». Есть удобная парковка для авто.</p>
+                    </div>
+                </div>
+
+                <div class="map-box">
+                    <!-- Интерактивная карта Yandex -->
+                    <iframe src="https://yandex.ru/map-widget/v1/?ll=37.778521%2C44.685368&z=16&pt=37.778521,44.685368,pm2rdm" width="100%" height="100%" frameborder="0" allowfullscreen="true"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Подвал -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <span style="font-size: 20px; font-weight: 700; color: #fff;">🍀 УДАЧА</span>
+                    <p style="margin-top: 5px;">Медицинский центр в Новороссийске</p>
+                </div>
+                <div>
+                    <p>ООО «Медицинский Центр Удача»</p>
+                    <p>Лицензия № Л041-01137-77/00394810</p>
+                </div>
+            </div>
+            <div class="disclaimer">
+                ИМЕЮТСЯ ПРОТИВОПОКАЗАНИЯ. НЕОБХОДИМА КОНСУЛЬТАЦИЯ СПЕЦИАЛИСТА.<br>
+                © 2026 Медицинский центр «Удача». Все права защищены.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Функция переключения версии для слабовидящих
+        function toggleAccessibleMode() {
+            document.body.classList.toggle('accessible-mode');
+            const isAccessible = document.body.classList.contains('accessible-mode');
+            localStorage.setItem('accessibleMode', isAccessible);
+        }
+
+        // Автовыбор услуги при клике на акцию
+        function selectService(serviceName) {
+            const select = document.getElementById('userService');
+            select.value = serviceName;
+        }
+
+        // Обработка отправки формы
+        document.getElementById('bookingForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('userName').value;
+            const phone = document.getElementById('userPhone').value;
+            const service = document.getElementById('userService').value;
+
+            alert(`Спасибо, ${name}!\nВаша заявка на направление "${service}" принята.\nМы перезвоним вам по номеру ${phone} в ближайшее время.`);
+            
+            this.reset();
+        });
+    </script>
+</body>
+</html>
